@@ -2,6 +2,34 @@
   text-align: center;
 }
 
+#light {
+  background-color: white;
+}
+
+#dark {
+  background-color: black;
+}
+
+#dark .banner{
+  color: white;
+}
+#dark .exceptional{
+  color: white;
+}
+#dark .testimonial{
+  /* color: white; */
+  background-color: antiquewhite;
+  padding: 20px;
+  border-radius: 10px;
+}
+#dark .services{
+  color: cyan;
+}
+
+#dark .footer{
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

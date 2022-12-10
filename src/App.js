@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import { RouterProvider } from 'react-router-dom';
 import './App.css';
+import { router } from './Routes/Routes/Routes';
+import 'react-day-picker/dist/style.css';
+import { Toaster } from 'react-hot-toast';
+import { createContext, useContext } from 'react';
+import { AuthContext } from './contexts/AuthProvider';
+
+export const ThemeContext = createContext(null)
 
 function App() {
+  const {mode, setMode} = useContext(AuthContext)
+
+  const toggleTheme = () => {
+    setMode(curr => (curr === "light" ? "dark" : "light"))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeContext.Provider value={{mode, toggleTheme}}>
+      <div className='max-w-[1440px] mx-auto' id={mode}>
+      <RouterProvider router={router}></RouterProvider>
+      <Toaster></Toaster>
     </div>
+    </ThemeContext.Provider>
   );
 }
 
